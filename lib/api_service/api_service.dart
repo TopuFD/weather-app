@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart';
+import 'package:weather_app/Ui/components/reusable_code.dart';
 import 'package:weather_app/constant/constant.dart';
 import '../api_model/api_model.dart';
 
 class ApiService {
+  ReusableMethod reusableMethod = ReusableMethod();
   Future<WeatherModel?> getWeatherData(String searchText) async {
     final url = "$baseUrl&q=$searchText&days=7";
     try {
@@ -16,7 +18,8 @@ class ApiService {
         throw "respons is not found";
       }
     } catch (e) {
-      throw e;
+      reusableMethod.mytoast("Error!");
     }
+    return null;
   }
 }

@@ -83,56 +83,58 @@ class _HomepageState extends State<Homepage> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               WeatherModel? weatherModel = snapshot.data;
-              return Column(
-                children: [
-                  TodaysWeather(weathermodel: weatherModel),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text(
-                    "Weather By Hours",
-                    style: TextStyle(
-                        fontSize: 22,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  SizedBox(
-                    height: 150,
-                    child: HoursWeather(weatherModel: weatherModel),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.blue),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => NextSevenDaysWeather(
-                                    weatherModel: weatherModel)));
-                      },
-                      child: const Text(
-                        "Next 7 Days Weather",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    TodaysWeather(weathermodel: weatherModel),
+                    const SizedBox(
+                      height: 10,
                     ),
-                  )
-                ],
+                    const Text(
+                      "Weather By Hours",
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    SizedBox(
+                      height: 150,
+                      child: HoursWeather(weatherModel: weatherModel),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 20),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.blue),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => NextSevenDaysWeather(
+                                      weatherModel: weatherModel)));
+                        },
+                        child: const Text(
+                          "Next 7 Days Weather",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               );
             }
             if (snapshot.hasError) {
